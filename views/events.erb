@@ -1,0 +1,25 @@
+<h1>All Events</h1>
+
+<% for event in @events %>
+    <p><a href="/events/<%= event[:id] %>"><%= event[:title] %></a></p>
+
+
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= event[:title] %></h5>
+    <p class="card-text"><%= event[:description] %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= event[:date] %></li>
+    <li class="list-group-item"><%= event[:location] %></li>
+    <li class="list-group-item">pendiente</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">RSVP</a>
+    <a href="#" class="card-link">RSVP II</a>
+  </div>
+</div>
+
+<% end %>
