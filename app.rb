@@ -97,12 +97,15 @@ get "/logout" do
 end
 
 
-get "/map" do
-     results = Geocoder.search(params[@event[:location]])
-    lat_long = results.first.coordinates # => [lat, long]
-    @latitude = lat_long[0]
-    @longitude = lat_long[1]
-    @lat_long = "#{@latitude},#{@longitude}"
-    "#{lat_long[0]} #{lat_long[1]}"
+get "/events/new" do
+    view "new_event"
 end
 
+post "/events/create" do
+    puts params
+    events_table.insert(title: params["title"], 
+                        description: ["description"], 
+                        date: ["date"], 
+                        location: ["location"])
+    view "create_event"
+end
