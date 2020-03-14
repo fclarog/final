@@ -33,6 +33,19 @@ get "/events" do
     view "events"
 end
 
+get "/events/new" do
+    view "new_event"
+end
+
+post "/events/create" do
+    puts params
+    events_table.insert(title: params["title"], 
+                        description: params["description"], 
+                        date: params["date"], 
+                        location: params["location"])
+    view "create_event"
+end
+
 get "/events/:id" do
     @event = events_table.where(id: params[:id]).to_a[0]
     @rsvps = rsvps_table.where(event_id: @event[:id])
@@ -97,15 +110,4 @@ get "/logout" do
 end
 
 
-get "/events/new" do
-    view "new_event"
-end
 
-post "/events/create" do
-    puts params
-    events_table.insert(title: params["title"], 
-                        description: params["description"], 
-                        date: params["date"], 
-                        location: params["location"])
-    view "create_event"
-end
