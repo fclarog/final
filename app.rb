@@ -15,6 +15,11 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
+account_sid = "ACed949bf34bd42e0baf5ebdaaed536d9c"
+auth_token = "84647bdbe6a122304900b748666a6125"
+client = Twilio::REST::Client.new(account_sid, auth_token)
+
+
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
 users_table = DB.from(:users)
@@ -73,6 +78,14 @@ get "/events/:id/rsvps/create" do
                        user_id: session["user_id"],
                        going: params["going"],
                        comments: params["comments"])
+    title = @event[:title]
+    date = @event[:date]
+    location = @event[:location]
+    client.messages.create(
+        from: "+14243560335", 
+        to: "+12244359208",
+        body: "We are very happy that you will be joining us for #{title}, 
+        your reservation is confirmed! We look to see you there on #{date} at #{location}")
     view "create_rsvp"
 end
 
@@ -84,6 +97,10 @@ post "/users/create" do
     puts params
     hashed_password = BCrypt::Password.create(params["password"])
     users_table.insert(name: params["name"], email: params["email"], password: hashed_password)
+    client.messages.create(
+        from: "+14243560335", 
+        to: "+12244359208",
+        body: "You have signed up for EventWorld! Welcome.")
     view "create_user"
 end
 
