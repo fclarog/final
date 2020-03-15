@@ -15,8 +15,8 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-account_sid = "ACed949bf34bd42e0baf5ebdaaed536d9c"
-auth_token = "84647bdbe6a122304900b748666a6125"
+account_sid = ENV["TWILIO_ACCOUNT_SID"]
+auth_token = ENV["TWILIO_AUTH_TOKEN"]
 client = Twilio::REST::Client.new(account_sid, auth_token)
 
 
