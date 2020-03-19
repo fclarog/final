@@ -1,2 +1,11 @@
+<% if @current_user %>
+
 <h1>Thanks for signing in!</h1>
-<p><a href="/events" class="btn btn-primary">Go Home</a></p>
+<p><a href="/events" class="btn btn-primary">Go to All UC matches</a></p>
+
+<% else %>
+<p> 
+<a href="/users/new" class="btn btn-danger">Please sign up to see all the UC matches </a>    
+<p/>
+<p> If you already have an account <a href="/logins/new" class="btn btn-danger">Please sign in to see all the UC matches</a></p>
+<% end %>

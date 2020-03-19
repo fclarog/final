@@ -1,3 +1,5 @@
+<% if @current_user %>
+
 <h2>
     <i class="far fa-calendar-alt"></i>
     <%= @event[:date] %>
@@ -6,7 +8,7 @@
 
 <form action="/events/<%= @event[:id] %>/rsvps/create">
   <div class="form-group">
-    <label>Are you going?</label>
+    <label>Are you joining us?</label>
     <select class="form-control" name="going">
       <option value="1">Yes</option>
       <option value="0">No</option>
@@ -18,3 +20,10 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<% else %>
+<p> 
+<a href="/users/new" class="btn btn-danger">Please sign up to see all the UC matches </a>    
+<p/>
+<p> If you already have an account <a href="/logins/new" class="btn btn-danger">Please sign in to see all the UC matches</a></p>
+<% end %>

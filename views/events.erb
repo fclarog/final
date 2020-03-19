@@ -1,6 +1,6 @@
 <% if @current_user %>
 
-<h1>All Events</h1>
+<h1>All UC Matches watch parties.</h1>
 
 
 <% for event in @events %>
@@ -26,6 +26,8 @@
 <a href="/events/new" class="card-link">Create Event</a>
 
 <% else %>
-<a href="/users/new" class="btn btn-danger">Please sign up to see all events</a>    
-<p> If you already have an account <a href="/logins/new" class="btn btn-danger">Please sign in to see all events</a></p>
+<p> 
+<a href="/users/new" class="btn btn-danger">Please sign up to see all the UC matches </a>    
+<p/>
+<p> If you already have an account <a href="/logins/new" class="btn btn-danger">Please sign in to see all the UC matches</a></p>
 <% end %>
