@@ -100,7 +100,7 @@ post "/users/create" do
     client.messages.create(
         from: "+14243560335", 
         to: "+12244359208",
-        body: "You have signed up for EventWorld! Welcome.")
+        body: "You have signed up for UC matches! Welcome.")
     view "create_user"
 end
 
